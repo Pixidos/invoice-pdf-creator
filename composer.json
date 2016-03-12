@@ -1,0 +1,35 @@
+{
+	"name": "pixidos/invoice-pdf-creator",
+	"description": "Pixidos: Create PDF Invoice",
+	"type": "componenet",
+	"license": ["MIT", "BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
+	"authors": [
+		{
+			"name": "PIXDOS LTD",
+			"email": "dev@pixidos.com"
+		},
+		{
+			"name": "Ondra Votava",
+			"email": "ondra.votava@pixidos.com"
+		}
+	],
+	"support": {
+		"email": "dev@pixidos.com",
+		"issues": "https://github.com/Pixidos/invoice-pdf-creator/issues"
+	},
+	"require": {
+		"php": ">= 5.6.0",
+		"nette/application": "^2.3.6",
+		"nette/bootstrap": "^2.3",
+		"nette/di": "^2.3",
+		"nette/utils": "^2.3",
+		"latte/latte": "^2.3",
+		"pixidos/accountancy-core" : "@dev",
+		"kdyby/translation": "^2.2",
+		"kartik-v/mpdf": "@dev"
+
+	},
+	"require-dev": {
+		"nette/tester": "^1.6"
+	}
+}

@@ -1,0 +1,27 @@
+invoice: Invoice
+
+supplier: SUPPLIER
+customer: CUSTOMER
+
+regno: "Reg no:"
+vatid: "VAT id:"
+
+notVatPayer: We are NOT VAT payer
+bnkacc: Bank Account
+
+bank: Bank
+ref: Reference
+
+order_no: "Order no:"
+paymethod: "Payment method:"
+issue: "Issued on"
+vatdate: "Vat Date:"
+duedate: "Due on"
+
+
+method:
+	bankacc: Bank transfer
+
+items:
+	unitprice: "Unit price"
+	total: Total

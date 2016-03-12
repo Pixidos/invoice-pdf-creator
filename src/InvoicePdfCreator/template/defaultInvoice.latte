@@ -1,0 +1,197 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>{_pdf_invoice.invoice} {$invoice->getInvoiceNo()}</title>
+    <style>
+        {$style|noescape}
+    </style>
+</head>
+<body>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+    <tr>
+        <td class="width50"><img src="{$logoImage}" style="max-width: 70%"></td>
+        <td class="width50 highlighted big-text invoice-title">{_pdf_invoice.invoice} {$invoice->getInvoiceNo()}</td>
+    </tr>
+    <tr>
+        <td>
+            <table width="100%" border="0">
+                <tbody>
+                <tr>
+                    <td colspan="2" class="small-text light-text">{_pdf_invoice.supplier}</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><strong>{$supplier->getCompanyName()}</strong></td>
+
+                </tr>
+                <tr n:if="$supplier->getPersonName()">
+                    <td colspan="2"><strong>{$supplier->getPersonName()}</strong></td>
+                </tr>
+                <tr>
+                    <td colspan="2">{$supplier->getStreet()}</td>
+
+                </tr>
+                <tr>
+                    <td colspan="2">{$supplier->getPostalCode()} {$supplier->getCity()}</td>
+
+                </tr>
+                <tr>{* prazdny radek *}
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="width30">{_pdf_invoice.regno}</td>
+                    <td>{$supplier->getCompanyId()}</td>
+                </tr>
+                <tr n:if="$supplier->isVatPayer()"> {* pokud nebud platce tak colspan=2 *}
+                    <td class="width30">{_pdf_invoice.vatid}</td>
+                    <td>{$supplier->getVatId()}</td>
+                </tr>
+                <tr n:if="! $supplier->isVatPayer()"> {* pokud nebud platce tak colspan=2 *}
+                    <td colspan="2">{_pdf_invoice.notVatPayer}</td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="customer-border">
+            <table width="100%" border="0">
+                <tbody>
+                <tr>
+                    <td colspan="2" class="small-text light-text">{_pdf_invoice.customer}</td>
+                </tr>
+                <tr n:if="$customer->getCompanyName()">
+                    <td colspan="2"><strong>{$customer->getCompanyName()}</strong></td>
+                </tr>
+                <tr n:if="$customer->getPersonalName()">
+                    <td colspan="2"><strong>{$customer->getPersonalName()}</strong></td>
+                </tr>
+                <tr>
+                    <td colspan="2">{$customer->getStreet()}</td>
+
+                </tr>
+                <tr>
+                    <td colspan="2">{$customer->getPostalCode()} {$customer->getCity()}</td>
+
+                </tr>
+                <tr>{* prazdny radek *}
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="30%">{_pdf_invoice.regno}</td>
+                    <td>{$customer->getCompanyId()}</td>
+                </tr>
+                <tr> {* pokud nema VAT ID nechat prazdne *}
+                    <td>{_pdf_invoice.vatid}</td>
+                    <td>{$customer->getVatId()}</td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td class="width50 highlighted">
+            <table width="100%" border="0" class="bank-info">
+
+                <tbody>
+                <tr>
+                    <td colspan="2">{_pdf_invoice.bnkacc}</td>
+                    <td class="to-right">3919754389/0800</td>
+                </tr>
+                <tr n:if="$bnkacc->getIban()">
+                    <td>IBAN:</td>
+                    <td colspan="2" class="to-right">{$bnkacc->getIban()}</td>
+                </tr>
+                <tr n:if="$bnkacc->getSwift()">
+                    <td>SWIFT:</td>
+                    <td>&nbsp;</td>
+                    <td class="to-right">{$bnkacc->getSwift()}</td>
+                </tr>
+                <tr n:if="$bnkacc->getBankName()">
+                    <td colspan="2">{_pdf_invoice.bank}</td>
+                    <td class="to-right">{$bnkacc->getBankName()}<br>
+                        {$bnkacc->getBankAddress()}
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">{_pdf_invoice.ref}</td>
+                    <td class="to-right">{$invoice->getReference()}</td>
+                </tr>
+
+                </tbody>
+
+            </table>
+        </td>
+        <td class="width50 light-bg" valign="top">
+            <table width="100%" border="0" class="invoice-info">
+                <tbody>
+                <tr>
+                    <td>{_pdf_invoice.order_no}</td>
+                    <td class="to-right">{$invoice->getOrderNo()}</td>
+                </tr>
+                <tr>
+                    <td>{_pdf_invoice.paymethod}</td>
+                    {var $method = 'pdf_invoice.method.$invoice->getPaymentMethod()}
+                    <td class="to-right">{_$method}</td>
+                </tr>
+                <tr>
+                    <td>{_pdf_invoice.issue}</td>
+                    {var $format = 'd.m.Y'}
+                    <td class="to-right"><strong>{$invoice->getIssueDate()|date:$format}</strong></td>
+                </tr>
+                <tr>
+                    <td>{_pdf_invoice.vatdate}</td>
+                    <td class="to-right"><strong>{$invoice->getVatDate()|date:$format}</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>{_pdf_invoice.deudate}</strong></td>
+                    <td class="to-right"><span class="colorize-text"><strong>{$invoice->getDueDate()|date:$format}</strong></span></td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="list-items">
+    <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td colspan="3">&nbsp;</td>
+            <td class="light-bg to-right" width="120">{_pdf_invoice.method.bankacc}</td>
+            <td class="light-bg to-right" width="120">{_pdf_invoice.method.total}</td>
+        </tr>
+        <tr n:foreach="$items as $item">
+            <td width="10">{$item->getQuantity()}</td>
+            <td width="10">{$item->getUnit()}</td>
+            <td>{$item->getDescription()}            </td>
+            <td class="to-right">{$item->getUnitPrice()|priceFormat:$invoice->getCurrency()}</td>
+            <td class="to-right light-bg">{$item->getTotalPrice()|priceFormat:$invoice->getCurrency()}</td>
+        </tr>
+    </table>
+</div>
+
+<div class="total-price">
+    <table>
+        <tr>
+            <td class="width50">&nbsp;</td>
+            <td class="width50 double-border"></td>
+        </tr>
+        <tr>
+            <td class="width50">&nbsp;</td>
+            <td class="width50 big-text to-right"><strong>{$invoice->getTotalPrice()|priceFormat:$invoice->getCurrency()}</strong></td>
+        </tr>
+    </table>
+</div>
+
+
+<htmlpagefooter name="footer">
+    <table class="footer">
+        <tr>
+            <td style="text-align: center">created by Pixidos Accountancy</td>
+        </tr>
+    </table>
+</htmlpagefooter>
+<sethtmlpagefooter name="footer" value="on"/>
+
+</body>
+</html>

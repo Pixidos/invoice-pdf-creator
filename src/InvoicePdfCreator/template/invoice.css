@@ -1,0 +1,75 @@
+/** Define colors **/
+/** Font Sizing **/
+body {
+  font-size: 14px;
+  font-family: Verdana;
+}
+.invoice-container {
+  margin: auto;
+  width: 210mm;
+  min-height: 290mm;
+  background-color: #fff;
+}
+table {
+  width: 100%;
+  padding: 15px;
+  margin: 0;
+  border: none;
+}
+.big-text {
+  font-size: 18px;
+}
+.small-text {
+  font-size: 85%;
+}
+.light-text {
+  color: #999999;
+}
+.highlighted {
+  background-color: #a11525;
+  color: #ffffff;
+}
+.light-bg {
+  background-color: #cccccc;
+}
+.colorize-text {
+  color: #a11525;
+}
+.width50 {
+  width: 50%;
+}
+.width30 {
+  width: 30%;
+}
+.to-right {
+  text-align: right;
+}
+.invoice-title {
+  line-height: 60px;
+  font-weight: bold;
+  padding-left: 20px;
+}
+.customer-border {
+  border-left: 1px solid #999999;
+}
+.double-border {
+  border-bottom: 2px solid #999999;
+}
+.list-items table {
+  width: 100%;
+}
+.list-items table td {
+  border-bottom: 1px solid #999999;
+  padding: 15px 10px;
+}
+.logo-image {
+  max-width: 70%;
+}
+.bank-info {
+  background-color: #a11525;
+  color: #ffffff;
+}
+.bank-info td,
+.invoice-info td {
+  padding: 3px 0;
+}

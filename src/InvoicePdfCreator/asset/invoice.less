@@ -1,0 +1,117 @@
+/** Define colors **/
+
+@color-default: #606060;
+@color-light-text: #999;
+@color-light-bg: #ccc;
+
+@color-highlighted-bg: #a11525;
+@color-highlighted: #fff;
+
+/** Font Sizing **/
+
+@size-big: 18px;
+@size-normal: 14px;
+@size-small: 85%;
+
+body {
+  font-size: @size-normal;
+  padding: 0;
+  margin: 0;
+  font-family: Verdana;
+  background-color: #999;
+}
+.invoice-container{
+  margin: auto;
+  width: 210mm;
+  min-height: 290mm;
+  background-color: #fff;
+}
+
+table {
+  width: 100%;
+  padding: 15px;
+  margin: 0;
+  border: none;
+}
+
+
+.big-text {
+  font-size: @size-big;
+}
+
+.small-text {
+  font-size: @size-small;
+}
+
+.light-text {
+  color: @color-light-text;
+}
+
+.highlighted {
+  background-color: @color-highlighted-bg;
+  color: @color-highlighted;
+}
+
+.light-bg {
+  background-color: @color-light-bg;
+}
+
+.colorize-text {
+  color: @color-highlighted-bg;
+}
+
+.width50 {
+  width: 50%;
+}
+
+.width30 {
+  width: 30%;
+}
+
+.to-right {
+  text-align: right;
+}
+
+.invoice-title {
+  line-height: 60px;
+  font-weight: bold;
+  padding-left: 20px;
+}
+
+.customer-border {
+  border-left: 1px solid @color-light-text;
+}
+
+.double-border {
+  border-bottom: 2px solid @color-light-text;
+}
+
+.list-items {
+  // padding: 20px;
+  table {
+    width: 100%;
+
+    td {
+      border-bottom: 1px solid @color-light-text;
+      // height: 30px;
+      padding: 15px 10px
+    }
+  }
+}
+
+.total-price {
+  //padding: 20px;
+}
+
+.logo-image {
+  max-width: 70%;
+}
+.bank-info{
+  .highlighted;
+}
+.bank-info,
+.invoice-info {
+  td {
+    padding: 3px 0;
+  }
+}
