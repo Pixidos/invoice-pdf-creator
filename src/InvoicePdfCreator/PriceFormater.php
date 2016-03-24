@@ -28,15 +28,15 @@ class PriceFormater implements IPriceFormater
 
     private $langToSymbol = [
 
-        'czk' => [
+        self::CZK => [
             'cs' => 'Kč',
             'en' => 'CZK'
         ],
-        'eur' => [
+        self::EUR => [
             'cs' => 'EUR',
             'en' => 'EUR'
         ],
-        'usd' => [
+        self::USD => [
             'cs' => 'USD',
             'en' => 'USD'
         ]
