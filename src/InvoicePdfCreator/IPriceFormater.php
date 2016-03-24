@@ -21,6 +21,10 @@ namespace Pixidos\InvoicePdfCreator;
 interface IPriceFormater
 {
 
+    const CZK = 'czk';
+    const USD = 'usd';
+    const EUR = 'eur';
+    const GPB = 'gpb';
 
     /**
      * @param float $price
